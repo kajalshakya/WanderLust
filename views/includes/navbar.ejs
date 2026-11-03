@@ -1,0 +1,102 @@
+
+<!-- ==========================================
+     Navigation Bar
+========================================== -->
+
+<nav class="navbar navbar-expand-xl border-bottom sticky-top">
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-solid fa-compass"></i>
+        </a>
+
+
+        <!-- Search Bar - Always Visible -->
+        <div class="navbar-search">
+
+            <form
+                class="d-flex"
+                action="/listings"
+                method="GET"
+                role="search"
+            >
+
+                <!-- Destination Search Input -->
+                <input
+                    class="form-control me-2 search-inp"
+                    type="search"
+                    name="search"
+                    placeholder="Search destinations"
+                    value="<%= typeof search !== 'undefined' ? search : '' %>"
+                >
+
+                <!-- Search Button -->
+                <button class="btn search-btn" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Hamburger Menu -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <!-- Collapsible Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <!-- Explore Link -->
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+            </div>
+
+
+            <!-- User Navigation Links -->
+            <div class="navbar-nav ms-auto">
+
+                <!-- Add New Listing -->
+                <a class="nav-link" href="/listings/new">
+                    Airbnb your home
+                </a>
+
+                <!-- Authentication Links -->
+                <% if (currUser) { %>
+
+                    <!-- Logout Link -->
+                    <a class="nav-link" href="/logout">
+                        <b>Logout</b>
+                    </a>
+
+                <% } else { %>
+
+                    <!-- Signup Link -->
+                    <a class="nav-link" href="/signup">
+                        <b>Sign Up</b>
+                    </a>
+
+                    <!-- Login Link -->
+                    <a class="nav-link" href="/login">
+                        <b>Login</b>
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+</nav>

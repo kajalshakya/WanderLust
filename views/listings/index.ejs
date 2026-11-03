@@ -1,0 +1,272 @@
+
+<% /* Use the common boilerplate layout */ %>
+<% layout("/layouts/boilerplate") %>
+
+
+<!-- ==========================================
+     Filter and Category Section
+========================================== -->
+
+<div class="filter-section">
+
+    <!-- Mobile / Tablet Filter Toggle Button -->
+    <div class="mobile-filter-toggle">
+
+        <button
+            class="btn btn-outline-dark"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobileFilters"
+            aria-expanded="false"
+            aria-controls="mobileFilters"
+        >
+            <i class="fa-solid fa-bars"></i>
+            Categories & Filters
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         Categories Container
+    ========================================== -->
+
+    <div class="collapse" id="mobileFilters">
+
+        <div id="filters">
+
+            <!-- Trending Category -->
+            <a href="/listings?category=Trending" class="filter">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </a>
+
+
+            <!-- Rooms Category -->
+            <a href="/listings?category=Rooms" class="filter">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+            </a>
+
+
+            <!-- Iconic Cities Category -->
+            <a href="/listings?category=Iconic cities" class="filter">
+                <i class="fa-solid fa-city"></i>
+                <p>Iconic cities</p>
+            </a>
+
+
+            <!-- Mountains Category -->
+            <a href="/listings?category=Mountains" class="filter">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Mountains</p>
+            </a>
+
+
+            <!-- Castles Category -->
+            <a href="/listings?category=Castles" class="filter">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castles</p>
+            </a>
+
+
+            <!-- Amazing Pools Category -->
+            <a href="/listings?category=Amazing Pools" class="filter">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing Pools</p>
+            </a>
+
+
+            <!-- Camping Category -->
+            <a href="/listings?category=Camping" class="filter">
+                <i class="fa-solid fa-tent"></i>
+                <p>Camping</p>
+            </a>
+
+
+            <!-- Farms Category -->
+            <a href="/listings?category=Farms" class="filter">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farms</p>
+            </a>
+
+
+            <!-- Arctic Category -->
+            <a href="/listings?category=Arctic" class="filter">
+                <i class="fa-solid fa-snowflake"></i>
+                <p>Arctic</p>
+            </a>
+
+
+            <!-- Waterfalls Category -->
+            <a href="/listings?category=Waterfalls" class="filter">
+                <i class="fa-solid fa-water"></i>
+                <p>Waterfalls</p>
+            </a>
+
+
+            <!-- Boats Category -->
+            <a href="/listings?category=Boats" class="filter">
+                <i class="fa-solid fa-ship"></i>
+                <p>Boats</p>
+            </a>
+
+        </div>
+
+
+        <!-- ==========================================
+             Tax Toggle Section
+        ========================================== -->
+
+        <div class="tax-toggle">
+
+            <div class="form-check-reverse form-switch">
+
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                >
+
+                <label
+                    class="form-check-label"
+                    for="flexSwitchCheckDefault"
+                >
+                    Display total after Taxes
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================
+     Listings Cards Section
+========================================== -->
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 listings">
+
+    <!-- Loop Through All Listings -->
+    <% for (let listing of allListings) { %>
+
+        <div class="col">
+
+            <!-- Listing Details Link -->
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+
+                <div class="card bg-white listing-card">
+
+                    <!-- Listing Image -->
+                    <img
+                        src="<%= listing.image.url %>"
+                        class="card-img-top"
+                        alt="listing_image"
+                    >
+
+                    <!-- Image Overlay -->
+                    <div class="card-img-overlay"></div>
+
+
+                    <!-- Listing Information -->
+                    <div class="card-body">
+
+                        <p class="card-text">
+
+                            <!-- Listing Title -->
+                            <strong class="listing-title">
+                                <%= listing.title %>
+                            </strong>
+
+                            <br>
+
+                            <!-- Listing Price -->
+                            &#8377;<%= listing.price != null
+                                ? listing.price.toLocaleString("en-IN")
+                                : "Price not available" %>/Night
+
+                            <!-- Tax Information -->
+                            <i class="tax-info">
+                                &nbsp;&nbsp;+18% GST
+                            </i>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+
+<!-- ==========================================
+     Tax Switch Functionality
+========================================== -->
+
+<script>
+
+    // Get the tax switch element
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+    // Handle tax switch change event
+    taxSwitch.addEventListener("change", () => {
+
+        // Get all tax information elements
+        let taxInfo = document.getElementsByClassName("tax-info");
+
+        // Show or hide tax information based on switch state
+        for (let info of taxInfo) {
+            info.style.display = taxSwitch.checked ? "inline" : "none";
+        }
+
+    });
+
+</script>
+
+
+<!-- ==========================================
+     Responsive Filter Functionality
+========================================== -->
+
+<script>
+
+    // Handle filter visibility based on screen width
+    function handleFilters() {
+
+        const filters = document.getElementById("mobileFilters");
+
+        if (!filters) return;
+
+        // Display filters directly for the specified screen width
+        if (window.innerWidth >= 1101 && window.innerWidth <= 1376) {
+
+            filters.classList.remove("collapse", "show", "collapsing");
+            filters.style.display = "block";
+
+        } else {
+
+            // Enable Bootstrap collapse behavior for other screen sizes
+            filters.classList.add("collapse");
+            filters.style.display = "";
+
+        }
+
+    }
+
+    // Apply filter behavior on initial page load
+    handleFilters();
+
+    // Update filter behavior whenever window size changes
+    window.addEventListener("resize", handleFilters);
+
+</script>
