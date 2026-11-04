@@ -1041,3 +1041,80 @@ textarea {
         display: flex !important;
     }
 }
+
+/* ==========================================
+   Privacy Policy & Terms Pages
+========================================== */
+
+.legal-page {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2.5rem 3rem;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+
+/* Main Heading */
+.legal-page h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.7rem;
+}
+
+/* Last Updated */
+.legal-page .updated-date {
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: -0.3rem;
+    margin-bottom: 2rem;
+}
+
+/* Intro Paragraph */
+.legal-page > p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 0.9rem;
+}
+
+/* Section Headings */
+.legal-page h4 {
+    color: #fe424d;
+    font-size: 1.1rem;
+    font-weight: 650;
+    margin-top: 1.7rem;
+    margin-bottom: 0.7rem;
+}
+
+/* Section Content */
+.legal-page p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .legal-page {
+        margin: 1.5rem 1rem;
+        padding: 1.5rem;
+    }
+
+    .legal-page h1 {
+        font-size: 1.7rem;
+    }
+
+    .legal-page h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .legal-page {
+        padding: 1.2rem;
+    }
+
+    .legal-page h1 {
+        font-size: 1.5rem;
+    }
+}

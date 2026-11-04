@@ -73,7 +73,7 @@
                 </a>
 
                 <!-- Authentication Links -->
-                <% if (currUser) { %>
+                <% if (typeof currUser !== "undefined" && currUser) { %>
 
                     <!-- Logout Link -->
                     <a class="nav-link" href="/logout">

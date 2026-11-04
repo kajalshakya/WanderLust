@@ -2,7 +2,7 @@
 
 WanderLust is a full-stack travel and accommodation listing web application inspired by Airbnb. It allows users to explore different destinations, create accommodation listings, upload property images, and share their experiences through reviews and ratings.
 
-The application provides user authentication, listing management, image uploads, location-based search, category filtering, and review management.
+The application provides user authentication, listing management, image uploads, location-based search, category filtering, review management, and legal information pages.
 
 ---
 
@@ -19,6 +19,8 @@ The application provides user authentication, listing management, image uploads,
 - [Application Routes](#application-routes)
 - [How the Application Works](#how-the-application-works)
 - [Future Enhancements](#future-enhancements)
+- [Author](#author)
+- [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -94,6 +96,15 @@ The project follows the **MVC (Model-View-Controller) architecture**, making the
 - Property cards with images and details.
 - Mobile-friendly layouts.
 
+### 9. Privacy Policy and Terms & Conditions
+
+- Dedicated Privacy Policy page.
+- Dedicated Terms & Conditions page.
+- Information about user data collection and usage.
+- Details about user responsibilities and website usage.
+- Accessible through footer links.
+- Responsive styling for legal information pages.
+
 ---
 
 ## Technologies Used
@@ -131,7 +142,7 @@ This separation makes the code easier to manage, understand, and maintain.
 ## Project Structure
 
 ```text
-Wanderlust/
+WanderLust/
 │
 ├── controllers/
 │   ├── listings.js
@@ -161,7 +172,9 @@ Wanderlust/
 │   │   ├── index.ejs
 │   │   ├── new.ejs
 │   │   ├── edit.ejs
-│   │   └── show.ejs
+│   │   ├── show.ejs
+│   │   ├── privacy.ejs
+│   │   └── terms.ejs
 │   │
 │   ├── users/
 │   │   ├── login.ejs
@@ -215,7 +228,7 @@ git clone https://github.com/kajalshakya/WanderLust.git
 ### Step 2: Navigate to the Project Directory
 
 ```bash
-cd Wanderlust
+cd WanderLust
 ```
 
 ### Step 3: Install Dependencies
@@ -234,15 +247,15 @@ MAP_TOKEN=your_mapbox_token
 CLOUD_NAME=your_cloudinary_cloud_name
 CLOUD_API_KEY=your_cloudinary_api_key
 CLOUD_API_SECRET=your_cloudinary_api_secret
+
+ATLASDB_URL=your_mongodb_atlas_connection_string
+
 SECRET=your_session_secret
-
 ```
-
-Add your MongoDB connection URL if your application uses an environment variable for database configuration.
 
 **Note:** Use the exact environment variable names referenced in your `app.js` and `cloudConfig.js` files. Never upload your `.env` file or API secrets to GitHub.
 
-### Step 5: Start MongoDB
+### Step 5: Configure MongoDB
 
 Make sure your MongoDB server is running locally, or configure your MongoDB Atlas connection.
 
@@ -263,6 +276,21 @@ npx nodemon app.js
 ```text
 http://localhost:3000/listings
 ```
+
+---
+
+## Environment Variables
+
+The application uses environment variables to securely manage API credentials and database connections.
+
+| Variable | Purpose |
+|---|---|
+| MAP_TOKEN | Mapbox API access token |
+| CLOUD_NAME | Cloudinary cloud name |
+| CLOUD_API_KEY | Cloudinary API key |
+| CLOUD_API_SECRET | Cloudinary API secret |
+| ATLASDB_URL | MongoDB Atlas connection string |
+| SECRET | Express session secret |
 
 ---
 
@@ -319,6 +347,13 @@ The application contains three main collections:
 | POST | `/listings/:id/reviews` | Create a review |
 | DELETE | `/listings/:id/reviews/:reviewId` | Delete a review |
 
+### Static Pages
+
+| Method | Route | Description |
+|---|---|---|
+| GET | `/privacy` | Display Privacy Policy |
+| GET | `/terms` | Display Terms & Conditions |
+
 ---
 
 ## How the Application Works
@@ -333,6 +368,7 @@ The application contains three main collections:
 8. Users can view listing details and read reviews posted by other users.
 9. Listing owners can edit or delete their own listings.
 10. Authorized users can manage reviews according to the application's access rules.
+11. Users can access the Privacy Policy and Terms & Conditions pages through the website footer.
 
 ---
 

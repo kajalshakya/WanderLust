@@ -191,6 +191,16 @@ app.use("/listings/:id/reviews", reviewsRouter);
 // Handle user authentication routes (signup, login, logout)
 app.use("/", usersRouter);
 
+// Privacy Policy Route
+app.get("/privacy", (req, res) => {
+    res.render("listings/privacy");
+});
+
+// Terms & Conditions Route
+app.get("/terms", (req, res) => {
+    res.render("listings/terms");
+});
+
 
 // ==========================================
 // 404 Error Handler
@@ -219,6 +229,8 @@ app.use((err, req, res, next) => {
     // Render the error page with the appropriate message
     res.status(statusCode).render("error.ejs", { message });
 });
+
+
 
 
 // ==========================================
