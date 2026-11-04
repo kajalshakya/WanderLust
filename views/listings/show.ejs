@@ -330,6 +330,9 @@
 
 
                                 <!-- Delete Review Form -->
+                                <!-- Delete Review Form -->
+                            <% if (currUser && review.author._id.equals(currUser._id)) { %>
+
                                 <form
                                     class="mb-3 ms-3"
                                     method="POST"
@@ -341,6 +344,8 @@
                                     </button>
 
                                 </form>
+
+                            <% } %>
 
                             </div>
 
