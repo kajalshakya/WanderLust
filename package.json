@@ -1,4 +1,6 @@
-{
+{  "engines": {
+  "node":"26.5.0"
+},
   "name": "major-project",
   "version": "1.0.0",
   "description": "",
@@ -15,6 +17,7 @@
     "cloudinary": "^2.11.0",
     "connect": "^3.7.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^18.0.9",
     "ejs": "^7.0.2",
