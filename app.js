@@ -42,7 +42,6 @@ const { currUser } = require("./middleware.js");
 // Database Connection
 // ==========================================
 
-// MongoDB Atlas connection URL from environment variables
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 
@@ -227,6 +226,8 @@ app.use((err, req, res, next) => {
 // ==========================================
 
 // Start the application on port 3000
-app.listen(3000, () => {
-    console.log("server is listening to port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
