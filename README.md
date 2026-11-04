@@ -1,4 +1,4 @@
-# WanderLust – Travel & Stay Booking Platform
+# WanderLust – Full Stack Accommodation Booking Platform
 
 WanderLust is a full-stack travel and accommodation listing web application inspired by Airbnb. It allows users to explore different destinations, create accommodation listings, upload property images, and share their experiences through reviews and ratings.
 
